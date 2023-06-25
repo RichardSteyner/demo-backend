@@ -22,6 +22,9 @@ public class Order {
     @Column(nullable = false)
     private Double amount;
 
+    public Order() {
+    }
+
     public Integer getId() {
         return id;
     }
