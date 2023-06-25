@@ -23,6 +23,10 @@
 hs_err_pid*
 replay_pid*
 
+#Maven
+.mvn
+mvnw.cmd
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
