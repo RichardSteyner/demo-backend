@@ -1,6 +1,10 @@
 package com.codifacil.demobackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orden")
@@ -21,6 +25,11 @@ public class Order {
 
     @Column(nullable = false)
     private Double amount;
+
+    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+    @JoinColumn(name = "id_order")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<OrderDetail> details = new ArrayList<>();
 
     public Order() {
     }
@@ -63,5 +72,13 @@ public class Order {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public List<OrderDetail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<OrderDetail> details) {
+        this.details = details;
     }
 }
